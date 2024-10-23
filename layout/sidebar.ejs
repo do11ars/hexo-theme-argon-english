@@ -3,7 +3,7 @@
 		<% if (theme.sidebar_announcement != ''){ %>
 			<div id="leftbar_announcement" class="card bg-white shadow-sm border-0">
 				<div class="leftbar-announcement-body">
-					<div class="leftbar-announcement-title text-white">公告</div>
+					<div class="leftbar-announcement-title text-white">Announcement</div>
 					<div class="leftbar-announcement-content text-white"><%= theme.sidebar_announcement %></div>
 				</div>
 			</div>
@@ -53,7 +53,7 @@
 			<% } %>
 			<div class="card-body text-center leftbar-search-button">
 				<button id="leftbar_search" class="btn btn-secondary btn-lg active btn-sm btn-block border-0" role="button" data-toggle="modal" data-target="#argon_search_modal" >
-					<i class="menu-item-icon fa fa-search mr-0"></i> 搜索
+					<i class="menu-item-icon fa fa-search mr-0"></i> Search
 				</button>
 			</div>
 		</div>
@@ -69,11 +69,11 @@
 	                <ul class="nav nav-pills nav-fill" role="tablist">
 						<% if (is_post()) { %>
 							<li class="nav-item sidebar-tab-switcher">
-								<a class="<% if (nowActiveTab == 0) { %>active show<% } %>" id="leftbar_tab_catalog_btn" data-toggle="tab" href="#leftbar_tab_catalog" role="tab" aria-controls="leftbar_tab_catalog" no-pjax>文章目录</a>
+								<a class="<% if (nowActiveTab == 0) { %>active show<% } %>" id="leftbar_tab_catalog_btn" data-toggle="tab" href="#leftbar_tab_catalog" role="tab" aria-controls="leftbar_tab_catalog" no-pjax>Table of Contents</a>
 							</li>
 						<% } %>
 						<li class="nav-item sidebar-tab-switcher">
-							<a class="<% if (nowActiveTab == 1) { %>active show<% } %>" id="leftbar_tab_overview_btn" data-toggle="tab" href="#leftbar_tab_overview" role="tab" aria-controls="leftbar_tab_overview" no-pjax>站点概览</a>
+							<a class="<% if (nowActiveTab == 1) { %>active show<% } %>" id="leftbar_tab_overview_btn" data-toggle="tab" href="#leftbar_tab_overview" role="tab" aria-controls="leftbar_tab_overview" no-pjax>Site</a>
 						</li>
 	                </ul>
 				</div>
@@ -114,19 +114,19 @@
 								<div class="site-state-item site-state-posts">
 									<a href="<%= url_for('/archives')%>">
 										<span class="site-state-item-count"><%= site.posts.length %></span>
-										<span class="site-state-item-name">文章</span>
+										<span class="site-state-item-name">Articles</span>
 									</a>
 								</div>
 								<div class="site-state-item site-state-categories">
 									<a data-toggle="modal" data-target="#blog_categories">
 										<span class="site-state-item-count"><%= site.categories.length %></span>
-										<span class="site-state-item-name">分类</span>
+										<span class="site-state-item-name">Categories</span>
 									</a>
 								</div>      
 								<div class="site-state-item site-state-tags">
 									<a data-toggle="modal" data-target="#blog_tags">
 										<span class="site-state-item-count"><%= site.tags.length %></span>
-										<span class="site-state-item-name">标签</span>
+										<span class="site-state-item-name">Tags</span>
 									</a>
 								</div>
 							</nav>
@@ -167,7 +167,7 @@
 	<div class="modal-dialog modal-dialog-centered">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title">分类</h5>
+				<h5 class="modal-title">Categories</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
@@ -193,7 +193,7 @@
 	<div class="modal-dialog modal-dialog-centered">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title">标签</h5>
+				<h5 class="modal-title">Tags</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
