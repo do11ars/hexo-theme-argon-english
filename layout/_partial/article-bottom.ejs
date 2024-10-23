@@ -40,6 +40,11 @@
 				<span class="btn-inner--icon"><i class="fa fa-telegram"></i></span>
 			</button>
 		</a>
+		<a target="_blank" class="no-pjax icon-whatsapp" href="https://wa.me/?text=<%= post.title %> - <%= full_url_for(post.path) %>" tooltip="Share To Whatsapp">
+			<button class="btn btn-icon btn-primary" style="background: #25D366;border: none;">
+				<span class="btn-inner--icon"><i class="fa fa-whatsapp"></i></span>
+			</button>
+		</a>
 		<a target="_blank" class="no-pjax icon-copy-link" id="share_copy_link" tooltip="Copy Link">
 			<button class="btn btn-icon btn-default">
 				<span class="btn-inner--icon"><i class="fa fa-link"></i></span>
