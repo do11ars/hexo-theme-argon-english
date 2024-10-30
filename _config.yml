@@ -111,6 +111,12 @@ custom_html_head: '' # Header script, HTML
 custom_html_foot: '' # Footer script, HTML
 
 # Comment
+utterances:
+  enable: false # Whether to enable the Utterances comment system
+  repo: ''
+  issue_term: 'pathname'
+  theme: 'photon-dark'
+  cross_origin: 'anonymous'
 gitalk:
   enable: false # Whether to enable the Gitalk comment system
   owner: ''
