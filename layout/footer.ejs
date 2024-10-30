@@ -5,6 +5,28 @@
 				</main>
 			</div>
 		</div>
+<script>
+document.body.addEventListener('click', function() {
+    var hasContents = $('#leftbar_catalog').children().length > 0;
+    if (!hasContents) {
+        $('.nav-wrapper').hide();
+        $('#leftbar_tab_overview_btn').tab('show');
+    }
+});
+function updateFabtnVisibility() {
+    var hasShare = $('#share_container').children().length > 0;
+    if (!hasShare) {
+        $('#fabtn_reading_progress').hide();
+    } else {
+        $('#fabtn_reading_progress').show();
+    }
+}
+
+$(document).ajaxComplete(function() {
+    updateFabtnVisibility();
+    <% if (theme.utterances.enable) { %>loadUtterances();<% } %>
+});
+</script>
 		<%- js('/argontheme.js') %>
 		<% if (theme.math_render == 'mathjax3') { /*Mathjax V3*/%>
 			<script>
