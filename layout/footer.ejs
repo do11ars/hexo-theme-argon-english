@@ -6,11 +6,39 @@
 			</div>
 		</div>
 <script>
-document.body.addEventListener('click', function() {
-    var hasContents = $('#leftbar_catalog').children().length > 0;
-    if (!hasContents) {
-        $('.nav-wrapper').hide();
-        $('#leftbar_tab_overview_btn').tab('show');
+function checkCatalogContents() {
+        var hasContents = $('#leftbar_catalog').children().length > 0;
+        if (!hasContents) {
+            $('.nav-wrapper').hide();
+            $('#leftbar_tab_overview_btn').tab('show');
+        } else {
+            $('.nav-wrapper').show();
+        }
+    }
+$(document).ajaxComplete(function() {
+
+    $(document).ready(function() {
+        checkCatalogContents();
+    });
+
+    $(window).on('popstate', function() {
+        checkCatalogContents();
+    });
+
+    const targetNode = document.getElementById('leftbar_catalog');
+    const config = { childList: true, subtree: true };
+
+    const callback = function(mutationsList) {
+        for (const mutation of mutationsList) {
+            if (mutation.type === 'childList') {
+                checkCatalogContents();
+            }
+        }
+    };
+
+    const observer = new MutationObserver(callback);
+    if (targetNode) {
+        observer.observe(targetNode, config);
     }
 });
 function updateFabtnVisibility() {
