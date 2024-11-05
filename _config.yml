@@ -51,7 +51,7 @@ leftbar_friend_links: # Sidebar friend link list
 show_headindex_number: true # Whether the sidebar article table of contents displays chapter numbers
 excerpt: true # Whether to display the article summary, if false, the full text will be displayed
 first_image_as_thumbnail: false # Automatically select the first picture of the article as the featured picture
-article_meta: time|categories|words|readingtime # Article Meta information list, separated by vertical bars, option: "time" publishing time, "edittime" editing time, "categories" categories, "read" reading volume, "words" word count, "readingtime" estimated reading time
+article_meta: categories|time|words|readingtime # Article Meta information list, separated by vertical bars, option: "time" publishing time, "edittime" editing time, "categories" categories, "read" reading volume, "words" word count, "readingtime" estimated reading time
 reading_speed_cn: 300 # Number of Chinese words read per minute, used to calculate estimated reading time
 reading_speed_en: 160 # Number of English words read per minute, used to calculate estimated reading time
 donate_qrcode_url: '' # Donation QR code link address, if left blank, it will not be displayed
@@ -66,8 +66,8 @@ transparent_banner: true # Banner is made transparent. It is recommended to turn
 show_toolbar_mask: false # Top bar mask. If the background image affects the display contrast of the top bar text, it is recommended to turn it on.
 
 # Floating Action Button
-fab_show_darkmode_button: false # Whether to display the Day and Night Mode switching floating operation button
-fab_show_settings_button: true # Whether to display Blog Settings floating action button
+fab_show_darkmode_button: true # Whether to display the Day and Night Mode switching floating operation button
+fab_show_settings_button: false # Whether to display Blog Settings floating action button
 fab_show_gotocomment_button: false # Whether to display a floating action button that jumps to the Comment area
 
 # Smooth Scrolling
