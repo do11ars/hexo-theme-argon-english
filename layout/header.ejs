@@ -210,6 +210,11 @@
 	:root{
 		--card-radius: <%= theme.card_radius %>px;
 	}
+
+.navbar-toggler-search-icon {
+		background-image: url(data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMzAgMzAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDMwIDMwIiB4bWw6c3BhY2U9InByZXNlcnZlIj48Zz48Y2lyY2xlIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0ZGRkZGRiIgc3Ryb2tlLXdpZHRoPSIyLjUiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgY3g9IjE0IiBjeT0iMTEuNiIgcj0iOC44Ii8+PGxpbmUgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRkZGRkZGIiBzdHJva2Utd2lkdGg9IjIuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIHgxPSIyMC43IiB5MT0iMTcuNCIgeDI9IjI3LjMiIHkyPSIyNCIvPjwvZz48L3N2Zz4=) !important;
+	}
+
 </style>
 
 <body>
@@ -222,10 +227,10 @@
 						<img src="<%= theme.toolbar_icon %>">
 					</a>
 				<% } %>
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+				<button id="fabtn_open_sidebar" class="navbar-toggler" type="button" aria-expanded="false" aria-label="Toggle sidebar">
 					<span class="navbar-toggler-icon"></span>
 				</button>
-				<a class="navbar-brand" href="<%= url_for('/') %>"><%= (theme.toolbar_title == '' ? config.title : theme.toolbar_title) %></a>
+				<a class="navbar-brand" href="<%= url_for('/') %>"></a>
 				<div class="navbar-collapse collapse" id="navbar_global">
 					<div class="navbar-collapse-header">
 						<div class="row">
@@ -254,13 +259,13 @@
 										<li class='nav-item<%= (typeof(theme.toolbar_menu[i]) == "object" ? " dropdown" : "") %>'>
 											<a href='<%= (typeof(theme.toolbar_menu[i]) == "object" ? "" : url_for(theme.toolbar_menu[i])) %>' class='nav-link' <%- (typeof(theme.toolbar_menu[i]) == "object" ? "onclick='return false;' data-toggle='dropdown' no-pjax" : "") %>>
 												<i class='ni ni-book-bookmark d-lg-none'></i>
-												<span class='nav-link-inner--text'><%= i %></span>
+												<span class='nav-link-inner--text'><%- i %></span>
 											</a>
 											<%
 												if (typeof(theme.toolbar_menu[i]) == "object"){ %>
 													<div class="dropdown-menu">
 														<% for (let j in theme.toolbar_menu[i]){ %>
-															<a href='<%= url_for(theme.toolbar_menu[j]) %>' class='dropdown-item'><%= j %></a>
+															<a href='<%= url_for(theme.toolbar_menu[j]) %>' class='dropdown-item'><%- j %></a>
 														<% } %>
 													</div>
 												<% }
@@ -286,6 +291,9 @@
 					</a>
 				<% } %>
 				<div id="navbar_menu_mask" data-toggle="collapse" data-target="#navbar_global"></div>
+                              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon navbar-toggler-search-icon"></span>
+				</button>
 			</div>
 		</nav>
 	</header>
@@ -472,7 +480,7 @@
 			</div>
 		<% } %>
 	</div>
-	<button id="fabtn_open_sidebar" class="btn btn-icon btn-neutral fabtn shadow-sm" type="button" aria-label="Open Sidebar Menu" tooltip="Menu">
+	<button style="display:none" id="fabtn_open_sidebar" class="btn btn-icon btn-neutral fabtn shadow-sm" type="button" aria-label="Open Sidebar Menu" tooltip="Menu">
 		<span class="btn-inner--icon"><i class="fa fa-bars"></i></span>
 	</button>
 	<button id="fabtn_reading_progress" class="btn btn-icon btn-neutral fabtn shadow-sm" type="button" aria-hidden="true" tooltip="Reading Progress">
@@ -510,4 +518,3 @@
   gtag('config', '<%= theme.gtag.id %>');
 </script>
 <% } %>
-
