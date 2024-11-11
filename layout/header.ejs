@@ -230,7 +230,7 @@
 				<button id="fabtn_open_sidebar" class="navbar-toggler" type="button" aria-expanded="false" aria-label="Toggle sidebar">
 					<span class="navbar-toggler-icon"></span>
 				</button>
-				<a class="navbar-brand" href="<%= url_for('/') %>"></a>
+				<a class="navbar-brand" href="<%= url_for('/') %>"><%= (theme.toolbar_title == '' ? config.title : theme.toolbar_title) %></a>
 				<div class="navbar-collapse collapse" id="navbar_global">
 					<div class="navbar-collapse-header">
 						<div class="row">
