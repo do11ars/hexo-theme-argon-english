@@ -1,149 +1,155 @@
-# 全局
-theme_color: '#5e72e4' # 主题色
-show_customize_theme_color_picker: true # 允许用户自定义主题色
-darkmode_autoswitch: false # 自动切换夜间模式，可选: false 默认使用日间, alwayson 默认使用夜间, system 跟随系统, time 随时间切换
-enable_amoled_dark: false # 夜间模式样式，false 为灰黑，true 则为暗黑
-card_radius: 4 # 默认卡片圆角大小
-card_shadow: # 默认卡片阴影大小，可选 small 和 big
-font: sans-serif # 默认字体，可选: sans-serif 无衬线字体, serif 衬线字体
-enable_headroom: false # 滚动时是否自动折叠顶栏
+# Overall Situation
+theme_color: '#5e72e4' # Theme Color
+show_customize_theme_color_picker: true # Allow users to customize theme colors
+darkmode_autoswitch: alwayson # Automatically switch to night mode, Option: "false" uses Night Mode by default, "alwayson" uses Dark Mode by default, "system" follows the system, "time" switches with time
+enable_amoled_dark: false # Night Mode style, "false" means gray and black, "true" means dark
+card_radius: 4 # Default Card Corner Size
+card_shadow: # Default Card Shadow Size, optional "small" and "big"
+font: sans-serif # Default Font, option: "sans-serif" or "serif"
+enable_headroom: false # Whether to automatically collapse the top bar when scrolling
 
-# 顶栏
-toolbar_icon: '' # 顶栏图标图片地址，留空则不显示
-toolbar_icon_link: '' # 顶栏图标链接，点击时跳转
-toolbar_title: '' # 顶栏标题，留空则跟随博客标题
-toolbar_menu: # 顶栏菜单，支持二级菜单
-  首页: /home
-  二级菜单:
-    归档: /archives
+# Top Bar
+toolbar_icon: '' # The image address of the top bar icon. If left blank, it will not be displayed.
+toolbar_icon_link: '' # Top bar icon link, jump when clicked
+toolbar_title: '' # Top Column title, leave blank to follow blog title
+toolbar_menu: # Top bar menu, supports secondary menu
+  Home: /
+  Secondary menu:
+    Archive: /archives
 
 # Banner
-banner_title: '' # Banner 标题，留空则跟随博客标题
-enable_banner_title_typing_effect: false # 是否启用 Banner 打字效果
-theme.banner_typing_effect_interval: 100 # Banner 打字间隔时长，单位 ms/字
-banner_subtitle: '' # Banner 子标题，留空则不显示
-banner_background_url: '/assets/img/banner.jpg' # Banner 背景图，留空则不显示
-banner_background_hide_shapes: false # 是否隐藏 Banner 背景圆形
-banner_background_color_type: 'shape-primary' # Banner 渐变样式，Banner 背景图会覆盖该选项，可选值: shape-primary, shape-default, shape-dark, bg-gradient-success, bg-gradient-info, bg-gradient-warning, bg-gradient-danger
+banner_title: '' # Banner Title, leave it blank to follow the blog title
+enable_banner_title_typing_effect: false # Whether to enable Banner typing effect
+theme.banner_typing_effect_interval: 100 # Banner typing interval length, unit ms/word
+banner_subtitle: '' # Banner Subtitle, if left blank, it will not be displayed.
+banner_background_url: '/assets/img/banner.jpg' # Banner Background image, if left blank, it will not be displayed.
+banner_background_hide_shapes: false # Whether to hide the Banner Background Circle
+banner_background_color_type: 'shape-primary' # Banner Gradient style, Banner Background image will cover this option, option value: shape-primary, shape-default, shape-dark, bg-gradient-success, bg-gradient-info, bg-gradient-warning, bg-gradient-danger
 
-# 侧栏
-sidebar_banner_title: '' # 侧栏标题，留空则跟随博客标题
-sidebar_banner_subtitle: '' # 侧栏子标题，留空则不显示，设为 --hitokoto-- 调用一言
-sidebar_announcement: '' # 侧栏公告，留空则不显示
-leftbar_menu: # 侧栏顶部菜单，支持无限层级菜单嵌套
-  首页: /
-  归档: /archives
-  二级菜单:
-    三级菜单:
-      首页: /
-sidebar_auther_image: '/assets/img/auther.jpg' # 侧栏作者头像
-sidebar_auther_name: '' # 侧栏作者名，留空则跟随博客名
-leftbar_author_links: # 侧栏作者链接列表
+# Sidebar
+sidebar_banner_title: '' # Sidebar Title, leave blank to follow blog title
+sidebar_banner_subtitle: '' # Sidebar Subtitle, leave it blank to not display, set to --hitokoto-- Call Yiyan
+sidebar_announcement: '' # Sidebar Announcement, if left blank, it will not be displayed.
+leftbar_menu: # Menu at the top of the sidebar, supporting unlimited levels of menu nesting
+  Home: /
+  Archive: /archives
+  Secondary menu:
+    Third level menu:
+      Home: /
+sidebar_auther_image: '/assets/img/author.jpg' # Sidebar author avatar
+sidebar_auther_name: 'Satoru' # Sidebar author name, leave blank to follow blog name
+leftbar_author_links: # Sidebar author link list
   aaa: /
   bbb: /
   ccc: /
-leftbar_friend_links: # 侧栏友链列表
+leftbar_friend_links: # Sidebar friend link list
   aaa: /
   bbb: /
   ccc: /
-show_headindex_number: false # 侧栏文章目录是否显示章节编号
 
-# 文章
-excerpt: true # 是否显示文章摘要，为 false 则显示全文
-first_image_as_thumbnail: false # 自动取文章第一张图为特色图片
-article_meta: time|categories|read|words|readingtime # 文章 Meta 信息列表，用竖线分隔开，可选: time 发布时间, edittime 编辑时间, categories 分类, read 阅读量，words 字数, readingtime 预计阅读时间
-reading_speed_cn: 300 # 每分钟中文阅读字数，用于计算预计阅读时间
-reading_speed_en: 160 # 每分钟英文阅读单词数，用于计算预计阅读时间
-donate_qrcode_url: '' # 赞赏二维码地址，留空则不显示
-additional_content_after_post: '' # 文末追加信息，支持 HTML，留空则不显示
-article_header_style: default # 文章内小标题样式，可选值: default, 1, 2
+# Article
+show_headindex_number: true # Whether the sidebar article table of contents displays chapter numbers
+excerpt: true # Whether to display the article summary, if false, the full text will be displayed
+first_image_as_thumbnail: false # Automatically select the first picture of the article as the featured picture
+article_meta: categories|time|words|readingtime # Article Meta information list, separated by vertical bars, option: "time" publishing time, "edittime" editing time, "categories" categories, "read" reading volume, "words" word count, "readingtime" estimated reading time
+reading_speed_cn: 300 # Number of Chinese words read per minute, used to calculate estimated reading time
+reading_speed_en: 160 # Number of English words read per minute, used to calculate estimated reading time
+donate_qrcode_url: '' # Donation QR code link address, if left blank, it will not be displayed
+additional_content_after_post: '' # Append information at the end of the text, supports HTML, will not be displayed if left blank
+article_header_style: default # Subtitle style within the article, option: default, 1, 2
 
-# 背景
-page_background_url: '/assets/img/banner.jpg' # 页面背景地址，留空则不设页面背景
-page_background_dark_url: '/assets/img/banner.jpg' # 夜间模式页面背景地址，留空则跟随日间模式
-page_background_opacity: 1 # 页面背景不透明度，0 ~ 1的小数
-transparent_banner: true # Banner 透明化，如果设置了背景以后推荐开启该选项
-show_toolbar_mask: false # 顶栏遮罩，如背景图片影响了顶栏文字显示对比度建议开启
+# Background
+page_background_url: '/assets/img/banner.jpg' # Page Background address. If left blank, there will be no page background.
+page_background_dark_url: '/assets/img/banner.jpg' # Night Mode page Background address, leave it blank to follow day mode
+page_background_opacity: 1 # Page Background opacity, decimal from 0 to 1
+transparent_banner: true # Banner is made transparent. It is recommended to turn on this option if the background is set.
+show_toolbar_mask: false # Top bar mask. If the background image affects the display contrast of the top bar text, it is recommended to turn it on.
 
-# 浮动操作按钮
-fab_show_darkmode_button: false # 是否显示日夜间模式切换浮动操作按钮
-fab_show_settings_button: true # 是否显示博客设置浮动操作按钮
-fab_show_gotocomment_button: false # 是否显示跳转到评论区浮动操作按钮
+# Floating Action Button
+fab_show_darkmode_button: true # Whether to display the Day and Night Mode switching floating operation button
+fab_show_settings_button: false # Whether to display Blog Settings floating action button
+fab_show_gotocomment_button: false # Whether to display a floating action button that jumps to the Comment area
 
-# 平滑滚动
-smoothscroll: 1 # 可选值: disabled, 1, 1-pulse, 2, 3
+# Smooth Scrolling
+smoothscroll: 1 # Option: disabled, 1, 1-pulse, 2, 3
 
 # Zoomify
-enable_zoomify: true # 是否启用 Zoomify 图片放大预览
-zoomify_duration: 200 # 图片放大动画时长
-zoomify_easing: cubic-bezier(0.4,0,0,1) # 图片放大动画曲线
-zoomify_scale: 0.9 # 图片放大后最大占页面大小的百分比, 0 ~ 1 的小数
+enable_zoomify: true # Whether to enable Zoomify image enlargement preview
+zoomify_duration: 200 # Image enlargement animation duration
+zoomify_easing: cubic-bezier(0.4,0,0,1) # Picture enlargement animation curve
+zoomify_scale: 0.9 # The maximum percentage of the page size after the image is enlarged, decimal 0 ~ 1
 
 # Lazyload
-enable_lazyload: true # 是否启用 Lazyload
-lazyload_threshold: 800 # 图片滚动到距离页面底部多少像素开始加载
-lazyload_effect: fadeIn # 图片显示动画
-lazyload_loading_style: 1 # 图片加载的动画, 可选值 1 ~ 11, none
+enable_lazyload: true # Whether to enable Lazyload
+lazyload_threshold: 800 # How many pixels from the bottom of the page does the image scroll to before loading?
+lazyload_effect: fadeIn # Picture display animation
+lazyload_loading_style: 1 # Image loading animation, optional values ​​1 ~ 11, none
 
 # Pangu.js
-enable_pangu: false # 是否启用 Pangu.js 自动用空格分隔文章中的中英文字符
+enable_pangu: false # Whether to enable Pangu.js to automatically use spaces to separate Chinese and English characters in articles
 
-# 其他
-pjax_disabled: false # 是否禁用 Pjax
-enable_into_article_animation: false # 是否启用进入文章动画
-enable_mobile_scale: false # 是否允许手机端缩放页面
+# Other
+pjax_disabled: false # Whether to disable Pjax
+enable_into_article_animation: false # Whether to enable entry animation
+enable_mobile_scale: false # Whether to allow the mobile phone to zoom the page
 
-# 页脚
-footer_html: '' # 页脚 HTML
+# Footer
+footer_html: '' # Footer HTML
 
-# 数学公式
-math_render: '' # 数学公式渲染方案，留空则不渲染，可选值: mathjax3, mathjax2, katex
-mathjax_cdn_url: //cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js # Mathjax 3 CDN 地址
-argon_mathjax_v2_cdn_url: //cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-AMS_HTML # Mathjax 2 CDN 地址
-katex_cdn_url: //cdn.jsdelivr.net/npm/katex@0.11.1/dist/ # Katex CDN 地址
+# Mathematical Formula
+math_render: '' # Mathematical formula rendering scheme. If left blank, it will not be rendered. Option: "mathjax3", "mathjax2", "katex"
+mathjax_cdn_url: //cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js # Mathjax 3 CDN address
+argon_mathjax_v2_cdn_url: //cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-AMS_HTML # Mathjax 2 CDN address
+katex_cdn_url: //cdn.jsdelivr.net/npm/katex@0.11.1/dist/ # Katex CDN address
 
-# 代码高亮
-enable_code_highlight: false # 是否启用 Highlight.js 代码高亮
-code_theme: vs2015 # 代码高亮主题
+# Code Highlighting
+enable_code_highlight: true # Whether to enable Highlight.js code highlighting
+code_theme: night-owl # Code highlighting theme
 
-# 脚本
-custom_html_head: '' # 页头脚本，HTML
-custom_html_foot: '' # 页尾脚本，HTML
+# Script
+custom_html_head: '' # Header script, HTML
+custom_html_foot: '' # Footer script, HTML
 
-# 评论
+# Comment
+utterances:
+  enable: false # Whether to enable the Utterances comment system
+  repo: ''
+  issue_term: 'pathname'
+  theme: 'photon-dark'
+  cross_origin: 'anonymous'
 gitalk:
-  enable: false # 是否启用 Gitalk 评论系统
+  enable: false # Whether to enable the Gitalk comment system
   owner: ''
   repo: ''
   admin: ''
   clientID: ''
   clientSecret: ''
-giscus: # https://giscus.app/zh-CN
-  enable: false # 是否启用 Giscus 评论系统
+giscus: # https://giscus.app/
+  enable: false # Whether to enable the Giscus comment system
   repo: ''
   repo_id: ''
   category: ''
   category_id: ''
   mapping: 'pathname'
   input_position: 'top'
-  theme: 'light'
-  lang: 'zh-CN'
+  theme: 'dark'
+  lang: 'en'
 waline: # https://waline.js.org/guide/get-started.html
-  enable: false # 是否启用 Waline 评论系统
+  enable: false # Whether to enable the Waline comment system
   server_url: '' 
 twikoo: # https://twikoo.js.org
-  enable: false # 是否启用 Twikoo 评论系统
+  enable: false # Whether to enable Twikoo comment system
   envID: ' '
   lang: 'zh-CN'
 
-# 分析
-# 百度统计
+# Analyze
+# Baidu statistics
 baidu_analytics:
-  enable: false # 是否启用 百度统计
-  id: '' # hm.js? 后的一串字符
+  enable: false # Whether to enable Baidu Statistics
+  id: '' # hm.js? a string of characters after
 
-# gtag 谷歌全局网络代码
-# Google Analytics  Universal Analytics(old) 与 Google Analytics（分析）4 均使用 gtag
+# gtag google global netcode
+# Google Analytics Universal Analytics(old) and Google Analytics 4 both use gtag
 gtag:
-  enable: false # 是否启用 gtag
-  id: '' # 请包含 G- 或 UA-
+  enable: false # Whether to enable gtag
+  id: '' # Please include G- or UA-

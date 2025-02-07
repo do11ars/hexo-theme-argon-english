@@ -19,14 +19,14 @@
 		if (page.title){
 			title = page.title + " - " + title;
 		}else if (is_tag()){
-			title = "标签 : " + page.tag + " - " + title;
+			title = "Tags : " + page.tag + " - " + title;
 		}else if (is_category()){
-			title = "分类 : " + page.category + " - " + title;
+			title = "Categories : " + page.category + " - " + title;
 		}else if (is_archive()){
 			if (page.year){
-				title = "归档 : " + page.year + (page.month == undefined ? '' : '/' + page.month) + " - " + title;
+				title = "Archive : " + page.year + (page.month == undefined ? '' : '/' + page.month) + " - " + title;
 			}else{
-				title = "归档 - " + title;
+				title = "Archive - " + title;
 			}
 		}
 	%>
@@ -50,7 +50,7 @@
 
 	<%- css('/assets/argon_css_merged.css') %>
 	<%- css('/style.css') %>
-	<%- css('//fonts.loli.net/css?family=Open+Sans:300,400,600,700|Noto+Serif+SC:300,600&display=swap') %>
+	<%- css('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Noto+Serif+SC:wght@300;600&display=swap') %>
 	<%- js('/assets/argon_js_merged.js') %>
 	<%- js('/assets/js/argon.min.js') %>
 	<%- js('//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js') %>
@@ -62,7 +62,7 @@
 
 	<script>
 		var argonConfig = {
-			language: "zh_CN",
+			language: "en_US",
 			<% if (theme.enable_zoomify != false){ %>
 				zoomify: {
 					duration: <%= theme.zoomify_duration %>,
@@ -210,6 +210,11 @@
 	:root{
 		--card-radius: <%= theme.card_radius %>px;
 	}
+
+.navbar-toggler-search-icon {
+		background-image: url(data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMzAgMzAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDMwIDMwIiB4bWw6c3BhY2U9InByZXNlcnZlIj48Zz48Y2lyY2xlIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0ZGRkZGRiIgc3Ryb2tlLXdpZHRoPSIyLjUiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgY3g9IjE0IiBjeT0iMTEuNiIgcj0iOC44Ii8+PGxpbmUgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRkZGRkZGIiBzdHJva2Utd2lkdGg9IjIuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIHgxPSIyMC43IiB5MT0iMTcuNCIgeDI9IjI3LjMiIHkyPSIyNCIvPjwvZz48L3N2Zz4=) !important;
+	}
+
 </style>
 
 <body>
@@ -222,7 +227,7 @@
 						<img src="<%= theme.toolbar_icon %>">
 					</a>
 				<% } %>
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+				<button id="fabtn_open_sidebar" class="navbar-toggler" type="button" aria-expanded="false" aria-label="Toggle sidebar">
 					<span class="navbar-toggler-icon"></span>
 				</button>
 				<a class="navbar-brand" href="<%= url_for('/') %>"><%= (theme.toolbar_title == '' ? config.title : theme.toolbar_title) %></a>
@@ -242,7 +247,7 @@
 						<li class="nav-item" data-toggle="modal" data-target="#argon_search_modal" style="padding-left: 5px;">
 							<a class="nav-link nav-link-icon">
 								<i class="fa fa-search"></i>
-								<span class="nav-link-inner--text d-lg-none">搜索</span>
+								<span class="nav-link-inner--text d-lg-none">Search</span>
 							</a>
 						</li>
 					</ul>
@@ -254,13 +259,13 @@
 										<li class='nav-item<%= (typeof(theme.toolbar_menu[i]) == "object" ? " dropdown" : "") %>'>
 											<a href='<%= (typeof(theme.toolbar_menu[i]) == "object" ? "" : url_for(theme.toolbar_menu[i])) %>' class='nav-link' <%- (typeof(theme.toolbar_menu[i]) == "object" ? "onclick='return false;' data-toggle='dropdown' no-pjax" : "") %>>
 												<i class='ni ni-book-bookmark d-lg-none'></i>
-												<span class='nav-link-inner--text'><%= i %></span>
+												<span class='nav-link-inner--text'><%- i %></span>
 											</a>
 											<%
 												if (typeof(theme.toolbar_menu[i]) == "object"){ %>
 													<div class="dropdown-menu">
 														<% for (let j in theme.toolbar_menu[i]){ %>
-															<a href='<%= url_for(theme.toolbar_menu[j]) %>' class='dropdown-item'><%= j %></a>
+															<a href='<%= url_for(theme.toolbar_menu[j]) %>' class='dropdown-item'><%- j %></a>
 														<% } %>
 													</div>
 												<% }
@@ -275,7 +280,7 @@
 						<li class="nav-item" data-toggle="modal" data-target="#argon_search_modal" id="navbar_search_btn_pc">
 							<a class="nav-link nav-link-icon">
 								<i class="fa fa-search"></i>
-								<span class="nav-link-inner--text d-lg-none">搜索</span>
+								<span class="nav-link-inner--text d-lg-none">Search</span>
 							</a>
 						</li>
 					</ul>
@@ -286,6 +291,9 @@
 					</a>
 				<% } %>
 				<div id="navbar_menu_mask" data-toggle="collapse" data-target="#navbar_global"></div>
+                              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon navbar-toggler-search-icon"></span>
+				</button>
 			</div>
 		</nav>
 	</header>
@@ -294,7 +302,7 @@
 	<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title">搜索</h5>
+				<h5 class="modal-title">Search</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
@@ -413,69 +421,69 @@
 <% } %>
 
 <div id="float_action_buttons" class="float-action-buttons fabtns-unloaded">
-	<button id="fabtn_toggle_sides" class="btn btn-icon btn-neutral fabtn shadow-sm" type="button" aria-hidden="true" tooltip-move-to-left="移至左侧" tooltip-move-to-right="移至右侧">
+	<button id="fabtn_toggle_sides" class="btn btn-icon btn-neutral fabtn shadow-sm" type="button" aria-hidden="true" tooltip-move-to-left="Move To Left" tooltip-move-to-right="Move To Right">
 		<span class="btn-inner--icon fabtn-show-on-right"><i class="fa fa-caret-left"></i></span>
 		<span class="btn-inner--icon fabtn-show-on-left"><i class="fa fa-caret-right"></i></span>
 	</button>
-	<button id="fabtn_back_to_top" class="btn btn-icon btn-neutral fabtn shadow-sm" type="button" aria-label="Back To Top" tooltip="回到顶部">
+	<button id="fabtn_back_to_top" class="btn btn-icon btn-neutral fabtn shadow-sm" type="button" aria-label="Back To Top" tooltip="Back To Top">
 		<span class="btn-inner--icon"><i class="fa fa-angle-up"></i></span>
 	</button>
-	<button id="fabtn_go_to_comment" class="btn btn-icon btn-neutral fabtn shadow-sm d-none" type="button" <% if (!theme.fab_show_gotocomment_button) { %>style='display: none;' <% } %> aria-label="Comment" tooltip="评论">
+	<button id="fabtn_go_to_comment" class="btn btn-icon btn-neutral fabtn shadow-sm d-none" type="button" <% if (!theme.fab_show_gotocomment_button) { %>style='display: none;' <% } %> aria-label="Comment" tooltip="Comment">
 		<span class="btn-inner--icon"><i class="fa fa-comment-o"></i></span>
 	</button>
-	<button id="fabtn_toggle_darkmode" class="btn btn-icon btn-neutral fabtn shadow-sm" type="button" <% if (!theme.fab_show_darkmode_button) { %>style='display: none;' <% } %> aria-label="Toggle Darkmode" tooltip-darkmode="夜间模式" tooltip-blackmode="暗黑模式" tooltip-lightmode="日间模式">
+	<button id="fabtn_toggle_darkmode" class="btn btn-icon btn-neutral fabtn shadow-sm" type="button" <% if (!theme.fab_show_darkmode_button) { %>style='display: none;' <% } %> aria-label="Toggle Darkmode" tooltip-darkmode="Dark Mode" tooltip-blackmode="Black Mode" tooltip-lightmode="Light Mode">
 		<span class="btn-inner--icon"><i class="fa fa-moon-o"></i><i class='fa fa-lightbulb-o'></i></span>
 	</button>
-	<button id="fabtn_toggle_blog_settings_popup" class="btn btn-icon btn-neutral fabtn shadow-sm" type="button" <% if (!theme.fab_show_settings_button) { %>style='display: none;' <% } %> aria-label="Open Blog Settings Menu" tooltip="设置">
+	<button id="fabtn_toggle_blog_settings_popup" class="btn btn-icon btn-neutral fabtn shadow-sm" type="button" <% if (!theme.fab_show_settings_button) { %>style='display: none;' <% } %> aria-label="Open Blog Settings Menu" tooltip="Settings">
 		<span class="btn-inner--icon"><i class="fa fa-cog"></i></span>
 	</button>
 	<div id="fabtn_blog_settings_popup" class="card shadow-sm" style="opacity: 0;" aria-hidden="true">
 		<div id="close_blog_settings"><i class="fa fa-close"></i></div>
 		<div class="blog-setting-item mt-3">
-			<div style="transform: translateY(-4px);"><div id="blog_setting_toggle_darkmode_and_amoledarkmode" tooltip-switch-to-darkmode="切换到夜间模式" tooltip-switch-to-blackmode="切换到暗黑模式"><span>夜间模式</span><span>暗黑模式</span></div></div>
+			<div style="transform: translateY(-4px);"><div id="blog_setting_toggle_darkmode_and_amoledarkmode" tooltip-switch-to-darkmode="Switch To Dark Mode" tooltip-switch-to-blackmode="Switch To Black Mode"><span>Dark Mode</span><span>Black Mode</span></div></div>
 			<div style="flex: 1;"></div>
 			<label id="blog_setting_darkmode_switch" class="custom-toggle">
 				<span class="custom-toggle-slider rounded-circle"></span>
 			</label>
 		</div>
 		<div class="blog-setting-item mt-3">
-			<div style="flex: 1;">字体</div>
+			<div style="flex: 1;">Font</div>
 			<div>
 				<button id="blog_setting_font_sans_serif" type="button" class="blog-setting-font btn btn-outline-primary blog-setting-selector-left">Sans Serif</button><button id="blog_setting_font_serif" type="button" class="blog-setting-font btn btn-outline-primary blog-setting-selector-right">Serif</button>
 			</div>
 		</div>
 		<div class="blog-setting-item mt-3">
-			<div style="flex: 1;">阴影</div>
+			<div style="flex: 1;">Shadow</div>
 			<div>
-				<button id="blog_setting_shadow_small" type="button" class="blog-setting-shadow btn btn-outline-primary blog-setting-selector-left">浅阴影</button><button id="blog_setting_shadow_big" type="button" class="blog-setting-shadow btn btn-outline-primary blog-setting-selector-right">深阴影</button>
+				<button id="blog_setting_shadow_small" type="button" class="blog-setting-shadow btn btn-outline-primary blog-setting-selector-left">Small</button><button id="blog_setting_shadow_big" type="button" class="blog-setting-shadow btn btn-outline-primary blog-setting-selector-right">Large</button>
 			</div>
 		</div>
 		<div class="blog-setting-item mt-3 mb-3">
-			<div style="flex: 1;">滤镜</div>
+			<div style="flex: 1;">Filter</div>
 			<div id="blog_setting_filters" class="ml-3">
-				<button id="blog_setting_filter_off" type="button" class="blog-setting-filter-btn ml-0" filter-name="off">关闭</button>
-				<button id="blog_setting_filter_sunset" type="button" class="blog-setting-filter-btn" filter-name="sunset">日落</button>
-				<button id="blog_setting_filter_darkness" type="button" class="blog-setting-filter-btn" filter-name="darkness">暗化</button>
-				<button id="blog_setting_filter_grayscale" type="button" class="blog-setting-filter-btn" filter-name="grayscale">灰度</button>
+				<button id="blog_setting_filter_off" type="button" class="blog-setting-filter-btn ml-0" filter-name="off">Disabled</button>
+				<button id="blog_setting_filter_sunset" type="button" class="blog-setting-filter-btn" filter-name="sunset">Sunset</button>
+				<button id="blog_setting_filter_darkness" type="button" class="blog-setting-filter-btn" filter-name="darkness">Brightless</button>
+				<button id="blog_setting_filter_grayscale" type="button" class="blog-setting-filter-btn" filter-name="grayscale">Greyscale</button>
 			</div>
 		</div>
 		<div class="blog-setting-item mb-3">
-			<div id="blog_setting_card_radius_to_default" style="cursor: pointer;" tooltip="恢复默认">圆角</div>
+			<div id="blog_setting_card_radius_to_default" style="cursor: pointer;" tooltip="Set To Default">Radius</div>
 			<div style="flex: 1;margin-left: 20px;margin-right: 8px;transform: translateY(2px);">
 				<div id="blog_setting_card_radius"></div>
 			</div>
 		</div>
 		<% if (theme.show_customize_theme_color_picker){ %>
 			<div class="blog-setting-item mt-1 mb-3">
-				<div style="flex: 1;">主题色</div>
+				<div style="flex: 1;">Theme Color</div>
 				<div id="theme-color-picker" class="ml-3"></div>
 			</div>
 		<% } %>
 	</div>
-	<button id="fabtn_open_sidebar" class="btn btn-icon btn-neutral fabtn shadow-sm" type="button" aria-label="Open Sidebar Menu" tooltip="菜单">
+	<button style="display:none" id="fabtn_open_sidebar" class="btn btn-icon btn-neutral fabtn shadow-sm" type="button" aria-label="Open Sidebar Menu" tooltip="Menu">
 		<span class="btn-inner--icon"><i class="fa fa-bars"></i></span>
 	</button>
-	<button id="fabtn_reading_progress" class="btn btn-icon btn-neutral fabtn shadow-sm" type="button" aria-hidden="true" tooltip="阅读进度">
+	<button id="fabtn_reading_progress" class="btn btn-icon btn-neutral fabtn shadow-sm" type="button" aria-hidden="true" tooltip="Reading Progress">
 		<div id="fabtn_reading_progress_bar" style="width: 0%;"></div>
 		<span id="fabtn_reading_progress_details">0%</span>
 	</button>
@@ -510,4 +518,3 @@
   gtag('config', '<%= theme.gtag.id %>');
 </script>
 <% } %>
-

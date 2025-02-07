@@ -1,13 +1,60 @@
 					<footer id="footer" class="site-footer card shadow-sm border-0">
 						<%- theme.footer_html %>
-						<div>Theme <a href="https://github.com/solstice23/hexo-theme-argon"><strong>Argon</strong></a> | Powered by Hexo</div>
-						<span id="busuanzi_container_site_uv">
-							本站访客数 <span id="busuanzi_value_site_uv"></span> 人次
-						</span>
+						<div>Theme <a href="https://github.com/do11ars/hexo-theme-argon-english"><strong>Argon</strong></a> | Powered by Hexo</div>
 					</footer>
 				</main>
 			</div>
 		</div>
+<script>
+function checkCatalogContents() {
+        var hasContents = $('#leftbar_catalog').children().length > 0;
+        if (!hasContents) {
+            $('.nav-wrapper').hide();
+            $('#leftbar_tab_overview_btn').tab('show');
+        } else {
+            $('.nav-wrapper').show();
+        }
+    }
+$(document).ajaxComplete(function() {
+
+    $(document).ready(function() {
+        checkCatalogContents();
+    });
+
+    $(window).on('popstate', function() {
+        checkCatalogContents();
+    });
+
+    const targetNode = document.getElementById('leftbar_catalog');
+    const config = { childList: true, subtree: true };
+
+    const callback = function(mutationsList) {
+        for (const mutation of mutationsList) {
+            if (mutation.type === 'childList') {
+                checkCatalogContents();
+            }
+        }
+    };
+
+    const observer = new MutationObserver(callback);
+    if (targetNode) {
+        observer.observe(targetNode, config);
+    }
+});
+function updateFabtnVisibility() {
+    var hasShare = $('#share_container').children().length > 0;
+    if (!hasShare) {
+        $('#fabtn_reading_progress').hide();
+    } else {
+        $('#fabtn_reading_progress').show();
+    }
+}
+
+$(document).ajaxComplete(function() {
+    updateFabtnVisibility();
+    <% if (theme.utterances.enable) { %>loadUtterances();<% } %>
+});
+</script>
 		<%- js('/argontheme.js') %>
 		<% if (theme.math_render == 'mathjax3') { /*Mathjax V3*/%>
 			<script>
