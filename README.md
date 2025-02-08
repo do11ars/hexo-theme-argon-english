@@ -2,52 +2,52 @@
 
 # Hexo-Theme-Argon
 
-[Argon-Theme](https://github.com/solstice23/argon-theme) 的 Hexo 移植版
+Hexo port of the [Argon-Theme](https://github.com/solstice23/argon-theme)
 
-# 关于
+# About
 
-Hexo-Theme-Argon 移植自 WordPress 版 Argon 主题。
+Hexo-Theme-Argon is ported from the WordPress version of the Argon theme.
 
-## 项目状态
+## Project Status
 
-目前没有精力维护移植版，只维护 Wordpress 版本。Wordpress 的新功能将不会来到 Hexo 版本，只进行必要的 BUG 修复。~~（很久没有使用 Hexo）~~
+Currently, there is no energy to maintain the ported version, only the WordPress version is maintained. New features in WordPress will not come to the Hexo version, only necessary bug fixes will be made. ~~(Haven't used Hexo for a long time)~~
 
-欢迎提交 Pull Request 贡献/移植新功能/修复 BUG。
+Feel free to submit Pull Requests to contribute/port new features/fix bugs.
 
-# 使用
+# Usage
 
-## 1. 安装并启用主题
+## 1. Install and enable the theme
 
-1. 在 `Hexo 根目录/themes` 目录下 Clone 本 Repo。
+1. Clone this repo in the `Hexo root directory/themes` directory.
 
 ```
 git clone https://github.com/solstice23/hexo-theme-argon.git
 ```
-安装 ejs 渲染器。
+Install the ejs renderer.
 
 ```
 npm install hexo-renderer-ejs
 ```
 
-2. 重命名 Clone 后的文件夹为 `argon`
+2. Rename the cloned folder to `argon`
 
-3. 在 `Hexo 根目录/_config.yml` 中将 `theme` 项改为 `argon`
+3. Change the `theme` item to `argon` in `Hexo root directory/_config.yml`
 
-## 2. 修改主题配置
+## 2. Modify theme configuration
 
-1. 将 `Hexo 根目录/themes/argon/_config.yml` 复制到 `Hexo 根目录/source/_data` 文件夹中，并重命名为 `argon.yml`
+1. Copy `Hexo root directory/themes/argon/_config.yml` to `Hexo root directory/source/_data` folder and rename it to `argon.yml`
 
-2. 修改复制后的配置文件
+2. Modify the copied configuration file
 
-## 3. 配置搜索功能
+## 3. Configure search functionality
 
-1. 在 `Hexo 根目录/themes` 目录下执行
+1. Execute in the `Hexo root directory/themes` directory
 
 ```
 npm install hexo-generator-search --save
 ```
 
-2. 在 `Hexo 根目录/_config.yml` 中添加选项
+2. Add options in `Hexo root directory/_config.yml`
 
 ```
 search:
@@ -56,57 +56,57 @@ search:
   content: true
 ```
 
-# 更新
+# Update
 
-在 `Hexo 根目录/themes/argon` 目录中执行
+Execute in the `Hexo root directory/themes/argon` directory
 
 ```
 git pull
 ```
 
-# 文章内参数
+# Post Parameters
 
-Argon 支持给文章设定一些单独的参数，例如文章头图
+Argon supports setting some individual parameters for posts, such as post thumbnails
 
-| 参数名                   | 解释                               |
-|--------------------------|-----------------------------------|
-| thumbnail                | 文章头图地址                       |
-| first_image_as_thumbnail | 该篇文章是否选用文中第一张图作为头图 |
-| after_post               | 文末附加内容                       |
-| excerpt                  | 文章自定义摘要                     |
+| Parameter Name            | Description                          |
+|---------------------------|--------------------------------------|
+| thumbnail                 | Post thumbnail URL                   |
+| first_image_as_thumbnail  | Use the first image in the post as the thumbnail |
+| after_post                | Additional content after the post    |
+| excerpt                   | Custom excerpt for the post          |
 
-# Hexo 版相比 Wordpress 版
+# Hexo version compared to WordPress version
 
-+ 保留了 Wordpress 版的大部分特性
-+ 相同的界面
-+ 暂时不支持多语言（欢迎 PR）
-+ 目前仅支持 Gitalk、giscus、waline 评论系统（欢迎 PR）
++ Retains most features of the WordPress version
++ Same interface
++ Does not support multiple languages for now (PRs welcome)
++ Currently only supports Gitalk, giscus, waline comment systems (PRs welcome)
 
-# Telegram 频道
+# Telegram Channel
 [t.me/argontheme](https://t.me/argontheme)
 
-自动推送更新消息以及其他关于 Argon 的消息
+Automatically push update messages and other news about Argon
 
-> Readme 待完善...
+> Readme to be improved...
 
-# 更新日志
+# Changelog
 
 ## 20201031 v1.0.2
-+ 新增不蒜子用于统计访问人次和文章阅读量
-+ 再次修复 Page 生成问题
-+ 更改高亮显示颜色为红色
-+ 修复 Gitalk 评论不加载问题
-+ 修复文章目录不能数字+标题的问题
++ Added Busuanzi for counting visits and post views
++ Fixed Page generation issue again
++ Changed highlight color to red
++ Fixed Gitalk comments not loading issue
++ Fixed issue with post directory not supporting numbers + titles
 
 ## 20200908 v1.0.1
-+ 修复搜索结果点击后不会关闭问题
-+ 修复手机搜索按钮重复问题
-+ 修复 Page 生成问题
++ Fixed issue where clicking search results would not close the search
++ Fixed duplicate search button issue on mobile
++ Fixed Page generation issue
 
 ## 20200905 v1.0.0
-+ 增加文章自定义摘要
-+ 支持 More 标签
-+ 修复 Gitalk 边距问题
++ Added custom excerpts for posts
++ Supported More tag
++ Fixed Gitalk margin issue
 
 ## 20200822 v1.0.0.beta
-+ 最初版本
++ Initial version
